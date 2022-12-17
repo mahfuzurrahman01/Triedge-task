@@ -1,0 +1,38 @@
+[
+    {
+      "name":"Male Fertility Test",
+      "type":"Advance",
+      "duration":"48 hours/ 2 days",
+      "required":"",
+      "parameters":"12 Parameters",
+      "tests":["Semen volume","Total Sperm Number", "Sperm Concentration","Vitality" ],
+      "price":"650"
+    },
+    {
+      "name":"Heavy Bleeding- Menstrual",
+      "type":"Basic",
+      "duration":"72 hours/ 3 days",
+      "required":"10-12 hours fasting required",
+      "parameters":"12 Parameters",
+      "tests":["Urine HCG","CBC", "TSH","Ferreting Test" ],
+      "price":"1249"
+    },
+    {
+      "name":"PCOS - Basic 1",
+      "type":"Basic",
+      "duration":"24 hours/ 1 days",
+      "required":"",
+      "parameters":"11 Parameters",
+      "tests":["Total Testoterone","Free Testosterone","TSH", "Prolactin"],
+      "price":"899"
+    },
+    {
+      "name":"Menstrual Irregularities",
+      "type":"Basic",
+      "duration":"24 hours/ 1 days",
+      "required":"Drink 3-4 glasses of water before test",
+      "parameters":"6 Parameters",
+      "tests":["LH","FSH","TSH","Prolactin"],
+      "price":"659"
+    }
+  ]
