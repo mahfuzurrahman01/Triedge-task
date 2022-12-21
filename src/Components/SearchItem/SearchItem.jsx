@@ -3,13 +3,28 @@ import { BsArrowRight } from 'react-icons/bs'
 import { GoSearch } from 'react-icons/go'
 import { CiLocationOn } from 'react-icons/ci'
 const SearchItem = () => {
-    const [num,setNum] = useState(0)
+    const [num, setNum] = useState(0)
     const [items, setItems] = useState([])
+    const [itemsName,setItemsName] = useState([])
+  
     useEffect(() => {
         fetch('items.json')
             .then(res => res.json())
             .then(data => setItems(data))
     }, [])
+    const changed = (event) => {
+        event.preventDefault()
+        const input = event.target.value;
+        console.log(input.length)
+        
+        const result = items.filter(item => item.name.toLowerCase().includes(input.toLowerCase()))
+        setItemsName(result)
+
+        if(input.length === 0){
+            setItemsName([])
+        }
+    }
+   
     return (
         <div>
             <div className=' rounded-xl lg:p-5 p-1'>
@@ -20,8 +35,13 @@ const SearchItem = () => {
                         <h1 className='lg:text-xl text-md'><span className='text-primary font-semibold'>Delhi</span> | Lab timing: 8 AM to 12 AM</h1>
                     </div>
                     <div className='lg:w-3/4 w-11/12 mx-auto relative'>
-                        <input type="text" placeholder='Search here' className='lg:py-2 py-1 px-4 text-lg text-gray-700 rounded-lg w-full border border-gray-400 my-2' />
+                        <input onChange={changed} type="text" placeholder='Search here' className='lg:py-2 py-1 px-4 text-lg text-gray-700 rounded-lg w-full border border-gray-400 my-2' />
                         <GoSearch className='absolute w-6 h-6 right-5 lg:top-5 top-4'></GoSearch>
+                    </div>
+                    <div className='w-1/5 mx-auto'>
+                        {
+                            itemsName.map(x => <p className='text-center cursor-pointer hover:bg-gray-500 hover:text-white rounded-lg duration-300 bg-gray-200 my-1'>{x.name}</p>)
+                        }
                     </div>
                 </div>
                 <div className=' lg:my-10 my-5 rounded-xl p-3'>
@@ -33,7 +53,7 @@ const SearchItem = () => {
                                     <h1 className='lg:text-xl text-lg font-semibold'>{item.name}</h1>
                                     <div className="form-control">
 
-                                        <input type="checkbox" onClick={()=>setNum(num + 1)} onDoubleClick={()=>setNum(num-1)} className="checkbox checkbox-primary border-gray-400 checkbox-sm rounded-md" />
+                                        <input type="checkbox" onClick={() => setNum(num + 1)} onDoubleClick={() => setNum(num - 1)} className="checkbox checkbox-primary border-gray-400 checkbox-sm rounded-md" />
 
                                     </div>
                                 </div>
